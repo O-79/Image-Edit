@@ -34,12 +34,12 @@ class APOD:
             print(f"{e}")
 
     @staticmethod
-    def GET_IMG(URL, TIT):
+    def GET_IMG(URL, NAME):
         try:
             if not os.path.exists(APOD.RESOURCES_PATH):
                 os.makedirs(APOD.RESOURCES_PATH)
             
-            IMG_NAME = f"{TIT.upper().replace(' ', '_')}.jpg"
+            IMG_NAME = f"{NAME.upper().replace(' ', '_')}.jpg"
             
             if not os.path.exists(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}')):
                 os.makedirs(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'))
