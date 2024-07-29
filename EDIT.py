@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-class EDIT:
+class Edit:
     def HUE_IMG(IMG_NAME, HUE):
         IMG_PATH = f'output\\DIR-{IMG_NAME}\\{IMG_NAME}'
         IMG_BGR = cv2.imread(IMG_PATH)
