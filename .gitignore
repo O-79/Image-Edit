@@ -1,0 +1,9 @@
+# Testing
+test*.*
+output/
+
+# Secrets
+key.*
+
+# pycache
+__pycache__
