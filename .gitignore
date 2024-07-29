@@ -1,6 +1,5 @@
 # Testing
 test*.*
-output/
 
 # Secrets
 key.*
