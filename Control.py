@@ -1,13 +1,25 @@
 import os
 import shutil
+import glob
 from APOD import APOD
 from Edit import Edit
 
 if __name__ == "__main__":
-    IMG_NAME = 'TEST_IMAGE_1.png'
+    IMG_NAME = ''
     DEBUG_PATH = 'output'
     _DBG_ = input("Debug? (Y / N): ")
     if _DBG_.lower() == 'y':
+        IMG_NAME_LST = []
+        for EXT in ['jpg', 'jpeg', 'png']:
+            IMG_NAME_LST.extend(glob.glob(os.path.join(DEBUG_PATH, f'*.{EXT}')))
+        print(f"Which image")
+        for IMG_NAME in IMG_NAME_LST:
+            if IMG_NAME == IMG_NAME_LST[-1]:
+                print("└── {IMG_NAME}")
+            else:
+                print("├── {IMG_NAME}")
+        IMG_NAME = IMG_NAME_LST[input("(1 - {len(IMG_NAME_LST)}): ")]
+        
         if not os.path.exists(os.path.join(DEBUG_PATH, f'DIR-{IMG_NAME}')):
                 os.makedirs(os.path.join(DEBUG_PATH, f'DIR-{IMG_NAME}'))
         
