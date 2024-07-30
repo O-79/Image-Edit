@@ -11,7 +11,8 @@ N -> Use NASA's Astronomy Picture of the Day (APOD) (need NASA APOD API Key set 
 ### Output directory tree:
 ```
 output/
-  DIR-ANOTHER_IMAGE.png/
+  DIR-ANOTHER_IMAGE.jpg/
+    ...
   DIR-IMAGE.png/
     COL/
       INV-IMAGE.png
@@ -38,4 +39,6 @@ output/
       HUE_150-IMAGE.png
     BAL-IMAGE.png.txt
     IMAGE.png
+  DIR-SUPER_COOL_PHOTO.jpeg/
+    ...
 ```
