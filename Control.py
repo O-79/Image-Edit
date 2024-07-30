@@ -11,14 +11,23 @@ if __name__ == "__main__":
     if _DBG_.lower() == 'y':
         IMG_NAME_LST = []
         for EXT in ['jpg', 'jpeg', 'png']:
-            IMG_NAME_LST.extend(glob.glob(os.path.join(DEBUG_PATH, f'*.{EXT}')))
-        print(f"Which image")
-        for IMG_NAME in IMG_NAME_LST:
-            if IMG_NAME == IMG_NAME_LST[-1]:
-                print("└── {IMG_NAME}")
-            else:
-                print("├── {IMG_NAME}")
-        IMG_NAME = IMG_NAME_LST[input("(1 - {len(IMG_NAME_LST)}): ")]
+            IMG_NAME_LST.extend(glob.glob(f'*.{EXT}'))
+        if len(IMG_NAME_LST) == 0:
+            print("No images found.")
+            exit()
+        elif len(IMG_NAME_LST) == 1:
+            IMG_NAME = IMG_NAME_LIST[0]
+            print(f"Selected {IMG_NAME}.")
+        else:
+            print(f"Which image?")
+            for IMG_NAME in IMG_NAME_LST:
+                if IMG_NAME == IMG_NAME_LST[-1]:
+                    print(f"└── {IMG_NAME}")
+                else:
+                    print(f"├── {IMG_NAME}")
+            IMG_NAME_IDX = int(input(f"(1 - {len(IMG_NAME_LST)}): "))
+            IMG_NAME = IMG_NAME_LST[max(1, min(len(IMG_NAME_LST), IMG_NAME_IDX)) - 1]
+            print(f"Selected {IMG_NAME}.")
         
         if not os.path.exists(os.path.join(DEBUG_PATH, f'DIR-{IMG_NAME}')):
                 os.makedirs(os.path.join(DEBUG_PATH, f'DIR-{IMG_NAME}'))
