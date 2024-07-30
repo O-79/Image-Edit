@@ -13,11 +13,11 @@ if __name__ == "__main__":
         for EXT in ['jpg', 'jpeg', 'png']:
             IMG_NAME_LST.extend(glob.glob(f'*.{EXT}'))
         if len(IMG_NAME_LST) == 0:
-            print("No images found.")
+            print("No images found")
             exit()
         elif len(IMG_NAME_LST) == 1:
             IMG_NAME = IMG_NAME_LIST[0]
-            print(f"Selected {IMG_NAME}.")
+            print(f"Selected {IMG_NAME}")
         else:
             print(f"Which image?")
             for IMG_NAME in IMG_NAME_LST:
@@ -27,7 +27,7 @@ if __name__ == "__main__":
                     print(f"├── {IMG_NAME}")
             IMG_NAME_IDX = int(input(f"(1 - {len(IMG_NAME_LST)}): "))
             IMG_NAME = IMG_NAME_LST[max(1, min(len(IMG_NAME_LST), IMG_NAME_IDX)) - 1]
-            print(f"Selected {IMG_NAME}.")
+            print(f"Selected {IMG_NAME}")
         print()
         
         if not os.path.exists(os.path.join(DEBUG_PATH, f'DIR-{IMG_NAME}')):
@@ -75,6 +75,4 @@ if __name__ == "__main__":
         BAL = True if _BAL_.lower() == 'y' else False
         Edit.HLT_ALL_IMG(IMG_NAME, BAL)
 
-# bal
-# - txt: lower better, find ranges for good/okay/poor: std dev of # of r, y, g, c, b, p (not n/a) pixels after hlt
-# - txt: % each color (including %n/a)
+    print(f"See output/DIR-{IMG_NAME}/")
