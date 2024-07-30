@@ -1,0 +1,10 @@
+Color Balance
+----------------
+RED: %6.3
+RED: %23.5
+RED: %15.1
+RED: %26.5
+RED: %23.6
+RED: %4.8
+----------------
+COLOR VARIATION: 8.6 [OKAY]
