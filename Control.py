@@ -45,12 +45,12 @@ if __name__ == "__main__":
     else:
         IMG_NAME = APOD.GET_APOD()
     
-    _HUE_ = input("Hue specturm? (Y / N): ")
+    _HUE_ = 'y'#input("Hue specturm? (Y / N): ")
     if _HUE_.lower() == 'y':
         for _i_ in range (1, 6):
             Edit.HUE_IMG(IMG_NAME, _i_ * 30)
     
-    _COL_ = input("Toggled color channels? (Y / N): ")
+    _COL_ = 'y'#input("Toggled color channels? (Y / N): ")
     if _COL_.lower() == 'y':
         Edit.RED_IMG(IMG_NAME)
         Edit.GRE_IMG(IMG_NAME)
@@ -59,7 +59,7 @@ if __name__ == "__main__":
         Edit.PUR_IMG(IMG_NAME)
         Edit.YEL_IMG(IMG_NAME)
 
-    _HLT_ = input("Highlight color channels? (Y / N): ")
+    _HLT_ = 'y'#input("Highlight color channels? (Y / N): ")
     if _HLT_.lower() == 'y':
         Edit.HLT_RED_IMG(IMG_NAME)
         Edit.HLT_GRE_IMG(IMG_NAME)
@@ -69,7 +69,7 @@ if __name__ == "__main__":
         Edit.HLT_YEL_IMG(IMG_NAME)
         Edit.HLT_ALL_IMG(IMG_NAME)
 
-        _BAL_ = input("Calculate color balance? (Y / N): ")
+        _BAL_ = 'y'#input("Calculate color balance? (Y / N): ")
         # if _BAL_.lower() == 'y':
         
 
