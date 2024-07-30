@@ -299,7 +299,6 @@ class Edit:
                 F.write(f"PUR: %{BAL_PUR}\n")
                 F.write("----------------\n")
                 F.write(f"COLOR VARIATION: {BAL_COL_VAR} [{BAL_COL_VAR_TYP}]\n")
-                
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
         HLT_ALL_PATH = f'output\\DIR-{IMG_NAME}\\HLT\\HLT_ALL-{IMG_NAME}'
