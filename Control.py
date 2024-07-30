@@ -7,7 +7,7 @@ from Edit import Edit
 if __name__ == "__main__":
     IMG_NAME = ''
     DEBUG_PATH = 'output'
-    _DBG_ = input("Debug? (Y / N): ")
+    _DBG_ = input("Provide an image? (Y / N): ")
     if _DBG_.lower() == 'y':
         IMG_NAME_LST = []
         for EXT in ['jpg', 'jpeg', 'png']:
@@ -28,6 +28,7 @@ if __name__ == "__main__":
             IMG_NAME_IDX = int(input(f"(1 - {len(IMG_NAME_LST)}): "))
             IMG_NAME = IMG_NAME_LST[max(1, min(len(IMG_NAME_LST), IMG_NAME_IDX)) - 1]
             print(f"Selected {IMG_NAME}.")
+        print()
         
         if not os.path.exists(os.path.join(DEBUG_PATH, f'DIR-{IMG_NAME}')):
                 os.makedirs(os.path.join(DEBUG_PATH, f'DIR-{IMG_NAME}'))
@@ -52,6 +53,8 @@ if __name__ == "__main__":
     
     _COL_ = 'y'#input("Toggled color channels? (Y / N): ")
     if _COL_.lower() == 'y':
+        Edit.INV_IMG(IMG_NAME)
+        Edit.BNW_IMG(IMG_NAME)
         Edit.RED_IMG(IMG_NAME)
         Edit.GRE_IMG(IMG_NAME)
         Edit.BLU_IMG(IMG_NAME)
@@ -67,21 +70,10 @@ if __name__ == "__main__":
         Edit.HLT_CYA_IMG(IMG_NAME)
         Edit.HLT_PUR_IMG(IMG_NAME)
         Edit.HLT_YEL_IMG(IMG_NAME)
-        Edit.HLT_ALL_IMG(IMG_NAME)
-
-        _BAL_ = 'y'#input("Calculate color balance? (Y / N): ")
-        # if _BAL_.lower() == 'y':
         
-
-# hlt cya(),pur,yel)
-# - check abs(g-b) > abs(b-r) & abs(r-g)
-# - override existing r, g, b hlt pixels
-
-# hlt all
-# - check r = g = b
-
-# inv all
-# - [255 - r, 255 - g, 255 - b]
+        _BAL_ = 'y'#input("Calculate color balance? (Y / N): ")
+        BAL = True if _BAL_.lower() == 'y' else False
+        Edit.HLT_ALL_IMG(IMG_NAME, BAL)
 
 # bal
 # - txt: lower better, find ranges for good/okay/poor: std dev of # of r, y, g, c, b, p (not n/a) pixels after hlt

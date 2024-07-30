@@ -39,7 +39,7 @@ class APOD:
             if not os.path.exists(APOD.RESOURCES_PATH):
                 os.makedirs(APOD.RESOURCES_PATH)
             
-            IMG_NAME = f"{NAME.upper().replace(' ', '_').replace('-', '_')}.png"
+            IMG_NAME = f"{NAME.upper().replace(' ', '_').replace('-', '_').replace('\\', '_').replace('/', '_').replace(':', '_').replace('*', '_').replace('?', '_').replace('\"', '_').replace('<', '_').replace('>', '_').replace('|', '_')}.png"
             
             if not os.path.exists(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}')):
                 os.makedirs(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'))
