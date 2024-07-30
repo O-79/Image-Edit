@@ -1,10 +1,10 @@
 Color Balance
 ----------------
 RED: %3.7
-RED: %20.2
-RED: %15.9
-RED: %5.1
-RED: %0.4
-RED: %0.4
+YEL: %20.2
+GRE: %15.9
+CYA: %5.1
+BLU: %0.4
+PUR: %0.4
 ----------------
 COLOR VARIATION: 7.7 [GOOD]
