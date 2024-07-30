@@ -280,9 +280,9 @@ class Edit:
             
             BAL_COL_LST = [BAL_RED, BAL_YEL, BAL_GRE, BAL_CYA, BAL_BLU, BAL_PUR]
             BAL_COL_VAR = round(np.std(BAL_COL_LST), 1)
-            if BAL_COL_VAR < 6:
+            if BAL_COL_VAR < 8:
                 BAL_COL_VAR_TYP = 'GOOD'
-            elif BAL_COL_VAR < 12:
+            elif BAL_COL_VAR < 16:
                 BAL_COL_VAR_TYP = 'OKAY'
             else:
                 BAL_COL_VAR_TYP = 'POOR'
