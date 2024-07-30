@@ -282,7 +282,7 @@ class Edit:
             BAL_COL_VAR = round(np.std(BAL_COL_LST), 1)
             if BAL_COL_VAR < 8:
                 BAL_COL_VAR_TYP = 'GOOD'
-            elif BAL_COL_VAR < 16:
+            elif BAL_COL_VAR < 12:
                 BAL_COL_VAR_TYP = 'OKAY'
             else:
                 BAL_COL_VAR_TYP = 'POOR'

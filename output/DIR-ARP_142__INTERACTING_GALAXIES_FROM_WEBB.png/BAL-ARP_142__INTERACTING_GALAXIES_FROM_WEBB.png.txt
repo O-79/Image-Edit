@@ -7,4 +7,4 @@ CYA: %0.4
 BLU: %38.9
 PUR: %8.1
 ----------------
-COLOR VARIATION: 14.4 [OKAY]
+COLOR VARIATION: 14.4 [POOR]
