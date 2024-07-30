@@ -1,14 +1,14 @@
-### Image color recognition and balancing
+# Image Color Recognition and Balancing
 <em>Author: Adi</em><br/>
 
-Run:
+### Run:
 <code>python Control.py</code>
 
 Y -> Provide image (.jpeg, .jpg, .png) in root directory.
 N -> Use NASA's Astronomy Picture of the Day (APOD) (need NASA APOD API Key set up as env var to choose this option)
 
-Output directory tree
-
+### Output directory tree:
+```
 output/
   DIR-IMAGE.png/
     COL/
@@ -36,3 +36,4 @@ output/
       HUE_150-IMAGE.png
     BAL-IMAGE.png.txt
     IMAGE.png
+```
