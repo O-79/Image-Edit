@@ -5,6 +5,7 @@
 <code>python Control.py</code>
 
 Y -> Provide image (.jpeg, .jpg, .png) in root directory.
+
 N -> Use NASA's Astronomy Picture of the Day (APOD) (need NASA APOD API Key set up as env var to choose this option)
 
 ### Output directory tree:
