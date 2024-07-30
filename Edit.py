@@ -10,7 +10,7 @@ class Edit:
         IMG_HSV[..., 0] = (IMG_HSV[..., 0] + HUE) % 180
         IMG_BGR = cv2.cvtColor(IMG_HSV, cv2.COLOR_HSV2BGR)
 
-        HUE_PATH = f'output\\DIR-{IMG_NAME}\\HUE\\HUE-{HUE}-{IMG_NAME}'
+        HUE_PATH = f'output\\DIR-{IMG_NAME}\\HUE\\HUE_{HUE}-{IMG_NAME}'
         cv2.imwrite(HUE_PATH, IMG_BGR)
 
     def INV_IMG(IMG_NAME):
