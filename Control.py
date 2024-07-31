@@ -7,7 +7,7 @@ from Edit import Edit
 if __name__ == "__main__":
     IMG_NAME = ''
     DEBUG_PATH = 'output'
-    _DBG_ = input("Provide an image? (N -> need NASA APOD API key env var!) (Y / N): ")
+    _DBG_ = input("Provide an image? (N -> require NASA APOD API key in root dir under 'key.txt'!) (Y / N): ")
     if _DBG_.lower() == 'y':
         IMG_NAME_LST = []
         for EXT in ['jpg', 'jpeg', 'png']:
