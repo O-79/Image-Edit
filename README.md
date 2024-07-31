@@ -6,7 +6,7 @@
 
 Y -> Provide image (.jpeg, .jpg, .png) in root directory.
 
-N -> Use NASA's Astronomy Picture of the Day (APOD) (need NASA APOD API Key set up as env var to choose this option)
+N -> Use NASA's Astronomy Picture of the Day (APOD) (requires NASA APOD API key in root dir under 'key.txt' to choose this option)
 
 ### Output directory tree:
 ```
