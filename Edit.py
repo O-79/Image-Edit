@@ -279,7 +279,7 @@ class Edit:
             BAL_PUR = round(float(100 * (NUM_PUR / TOT)), 1)
             
             BAL_COL_LST = [BAL_RED, BAL_YEL, BAL_GRE, BAL_CYA, BAL_BLU, BAL_PUR]
-            BAL_COL_VAR = 16 - round(np.std(BAL_COL_LST), 1)
+            BAL_COL_VAR = round(16 - np.std(BAL_COL_LST), 1)
             if BAL_COL_VAR > 8:
                 BAL_COL_VAR_TYP = 'GOOD'
             elif BAL_COL_VAR > 4:
@@ -290,21 +290,21 @@ class Edit:
             BAL_PATH = f'output\\DIR-{IMG_NAME}\\BAL-{IMG_NAME}.txt'
             with open(BAL_PATH, 'w') as F:
                 F.write("Color Balance Report\n")
-                F.write("----------------\n")
+                F.write("--------------------------------\n")
                 F.write(f"RED: %{BAL_RED}\n")
                 F.write(f"YEL: %{BAL_YEL}\n")
                 F.write(f"GRE: %{BAL_GRE}\n")
                 F.write(f"CYA: %{BAL_CYA}\n")
                 F.write(f"BLU: %{BAL_BLU}\n")
                 F.write(f"PUR: %{BAL_PUR}\n")
-                F.write("----------------\n")
+                F.write("--------------------------------\n")
                 F.write(f"COLOR VARIATION: {BAL_COL_VAR} [{BAL_COL_VAR_TYP}]\n")
-                F.write("----------------\n")
+                F.write("--------------------------------\n")
                 F.write("Grading:\n")
                 F.write("8 ---[GOOD]--- 16\n")
                 F.write("4 ---[OKAY]--- 8\n")
                 F.write("X ---[POOR]--- 4\n")
-                F.write("----------------\n")
+                F.write("--------------------------------\n")
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
         HLT_ALL_PATH = f'output\\DIR-{IMG_NAME}\\HLT\\HLT_ALL-{IMG_NAME}'

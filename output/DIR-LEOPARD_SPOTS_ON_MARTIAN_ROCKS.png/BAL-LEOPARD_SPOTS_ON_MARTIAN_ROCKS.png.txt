@@ -1,13 +1,13 @@
 Color Balance Report
 --------------------------------
-RED: %10.4
-YEL: %20.9
-GRE: %7.3
-CYA: %29.1
-BLU: %13.3
-PUR: %19.1
+RED: %2.2
+YEL: %96.6
+GRE: %1.1
+CYA: %0.1
+BLU: %0.0
+PUR: %0.0
 --------------------------------
-COLOR VARIATION: 8.7 [GOOD]
+COLOR VARIATION: -19.8 [POOR]
 --------------------------------
 Grading:
 8 ---[GOOD]--- 16
