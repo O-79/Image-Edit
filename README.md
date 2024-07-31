@@ -1,4 +1,4 @@
-# Image Color Recognition and Balancing
+# Image Color Recognition, Balancing, Distortion, and more
 <em>Author: Adi</em><br/>
 
 ### Run in CLI:
@@ -15,14 +15,22 @@ output/
     ...
   DIR-IMAGE.png/
     COL/  # Color channel toggling + invert + grayscale
-      INV-IMAGE.png
-      BNW-IMAGE.png
-      RED-IMAGE.png
-      YEL-IMAGE.png
-      GRE-IMAGE.png
-      CYA-IMAGE.PNG
-      BLU-IMAGE.png
-      PUR-IMAGE.png
+      COL_INV-IMAGE.png
+      COL_BNW-IMAGE.png
+      COL_RED-IMAGE.png
+      COL_YEL-IMAGE.png
+      COL_GRE-IMAGE.png
+      COL_CYA-IMAGE.PNG
+      COL_BLU-IMAGE.png
+      COL_PUR-IMAGE.png
+    DST/  # Distortions: pixellation, stretching (horizontal & vertical), pixel shuffling (4 randomized outputs)
+      DST_PXL-IMAGE.png
+      DST_HOR-IMAGE.png
+      DST_VER-IMAGE.png
+      DST_MIX_0-IMAGE.png
+      DST_MIX_1-IMAGE.png
+      DST-MIX_2-IMAGE.png
+      DST-MIX_3-IMAGE.png
     HLT/  # Color channel highlighting
       HLT_ALL-IMAGE.png
       HLT_RED-IMAGE.png
