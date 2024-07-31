@@ -2,7 +2,7 @@
 <em>Author: Adi</em><br/>
 
 <code>TODO:</code>
-"DUL" -> for B, G, R of each pixel: avg(val,127) ... 1, 2, 3, 4 iterations ... save as DST(?)\_DUL\_\[0-4\]-IMAGE.---
+"DUL" -> for B, G, R of each pixel: avg(val,127) ... 1, 2, 3, 4 iterations ... save as DST(?)HUE(?)\_DUL\_\[0-4\]-IMAGE.---
 
 ### Requirements:
 <code>pip install requests</code>
