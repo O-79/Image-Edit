@@ -1,6 +1,11 @@
 # Image Color Recognition, Balancing, Distortion, and more
 <em>Author: Adi</em><br/>
 
+### Requirements:
+<code>pip install requests</code>
+<code>pip install opencv-python</code>
+<code>pip install numpy</code>
+
 ### Run in CLI:
 <code>python Control.py</code>
 
