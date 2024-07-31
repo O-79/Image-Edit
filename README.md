@@ -2,6 +2,7 @@
 <em>Author: Adi</em><br/>
 
 <code>TODO:</code>
+
 "DUL" -> for B, G, R of each pixel: avg(og,127) ... 1, 2, 3, 4 iterations ... save as DST(?)HUE(?)\_DUL\_\[0-4\]-IMAGE.---
 
 ### Requirements:
