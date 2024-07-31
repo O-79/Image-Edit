@@ -71,11 +71,13 @@ if __name__ == "__main__":
     
     _COL_ = 'y'#input("Toggled color channels? (Y / N): ")
     if _COL_.lower() == 'y':
-        Edit.COL_INV_IMG(IMG_NAME)
+        Edit.COL_DUL_IMG(IMG_NAME)
+        Edit.COL_SAT_IMG(IMG_NAME)
         Edit.COL_BNW_IMG(IMG_NAME)
-        Edit.COL_RED_IMG(IMG_NAME)
-        Edit.COL_GRE_IMG(IMG_NAME)
+        Edit.COL_INV_IMG(IMG_NAME)
         Edit.COL_BLU_IMG(IMG_NAME)
+        Edit.COL_GRE_IMG(IMG_NAME)
+        Edit.COL_RED_IMG(IMG_NAME)
         Edit.COL_CYA_IMG(IMG_NAME)
         Edit.COL_PUR_IMG(IMG_NAME)
         Edit.COL_YEL_IMG(IMG_NAME)
