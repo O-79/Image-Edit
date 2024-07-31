@@ -2,7 +2,7 @@
 test*.*
 
 # Secrets
-key.*
+# key.*
 
 # pycache
 __pycache__
