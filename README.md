@@ -1,7 +1,7 @@
 # Image Color Recognition and Balancing
 <em>Author: Adi</em><br/>
 
-### Run:
+### Run in CLI:
 <code>python Control.py</code>
 
 Y -> Provide image (.jpeg, .jpg, .png) in root directory.
