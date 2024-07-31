@@ -1,6 +1,8 @@
 # Image Color Recognition, Balancing, Distortion, and more
 <em>Author: Adi</em><br/>
 
+<code>TODO: "DUL" -> for B, G, R of each pixel: avg(val,127) ... 1, 2, 3, 4 iterations ... save as DST(?)\_DUL\_\[0-4\]-*****.***</code>
+
 ### Requirements:
 <code>pip install requests</code>
 
