@@ -2,8 +2,10 @@ import os
 import requests
 
 class APOD:
-    with open('key.txt', 'r') as F:
-        API_KEY = F.read().strip()
+    API_KEY = os.getenv("NASA_API_KEY")
+    if API_KEY is None:
+        with open('key.txt', 'r') as F:
+            API_KEY = F.read().strip()
 
     APOD_URL = 'https://api.nasa.gov/planetary/apod'
     
