@@ -42,6 +42,9 @@ if __name__ == "__main__":
         if not os.path.exists(os.path.join(os.path.join(DEBUG_PATH, f'DIR-{IMG_NAME}'), 'HLT')):
             os.makedirs(os.path.join(os.path.join(DEBUG_PATH, f'DIR-{IMG_NAME}'), 'HLT'))
         
+        if not os.path.exists(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'DST')):
+                os.makedirs(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'DST'))
+        
         shutil.copy(IMG_NAME, os.path.join(os.path.join(os.path.join(DEBUG_PATH, f'DIR-{IMG_NAME}'), IMG_NAME)))
     else:
         IMG_NAME = APOD.GET_APOD()
@@ -74,5 +77,13 @@ if __name__ == "__main__":
         _BAL_ = 'y'#input("Calculate color balance? (Y / N): ")
         BAL = True if _BAL_.lower() == 'y' else False
         Edit.HLT_ALL_IMG(IMG_NAME, BAL)
+
+    _DST_ = 'y'#input("Distortion options? (Y / N): ")
+    if _DST_.lower() == 'y':
+        try:
+            PXL_AMT = int(input("Pixellation? (e.g. 16 = 16px squares): "))
+            Edit.PXL_IMG(IMG_NAME, PXL_AMT)
+        except ValueError:
+            print("[LOG] PIXELLATION -> IGNORE -> Chosen pixellation size is not an integer!")
 
     print(f"See output/DIR-{IMG_NAME}/")

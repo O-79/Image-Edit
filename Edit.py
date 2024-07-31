@@ -2,6 +2,36 @@ import cv2
 import numpy as np
 
 class Edit:
+    def PXL_IMG(IMG_NAME, SIZ):
+        IMG_PATH = f'output\\DIR-{IMG_NAME}\\{IMG_NAME}'
+        IMG_BGR = cv2.imread(IMG_PATH)
+        IMG_BGR = IMG_BGR.astype(np.int16)
+
+        HGT, WID, COL = IMG_BGR.shape
+        if HGT < SIZ or WID < SIZ:
+            print("[LOG] Chosen pixellation size is too large for image!")
+            return
+        
+        for R in range(HGT):
+            PXL = None
+            for C in range(WID):
+                if C % SIZ == 0:
+                    PXL = IMG_BGR[R, C].copy()
+                elif PXL is not None:
+                    IMG_BGR[R, C] = PXL
+        
+        for C in range(WID):
+            PXL = None
+            for R in range(HGT):
+                if R % SIZ == 0:
+                    PXL = IMG_BGR[R, C].copy()
+                elif PXL is not None:
+                    IMG_BGR[R, C] = PXL
+
+        IMG_BGR = IMG_BGR.astype(np.uint8)
+        HLT_YEL_PATH = f'output\\DIR-{IMG_NAME}\\DST\\DST_PXL-{IMG_NAME}'
+        cv2.imwrite(HLT_YEL_PATH, IMG_BGR)
+
     def HUE_IMG(IMG_NAME, HUE):
         IMG_PATH = f'output\\DIR-{IMG_NAME}\\{IMG_NAME}'
         IMG_BGR = cv2.imread(IMG_PATH)

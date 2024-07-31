@@ -52,6 +52,9 @@ class APOD:
             
             if not os.path.exists(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'HLT')):
                 os.makedirs(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'HLT'))
+                
+            if not os.path.exists(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'DST')):
+                os.makedirs(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'DST'))
             
             IMG_PATH = os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), IMG_NAME)
             
