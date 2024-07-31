@@ -3,9 +3,9 @@
 
 <code>TODO:</code>
 
-"DUL" -> for B, G, R of each pixel: avg(og,127) ... 1, 2, 3, 4 iterations ... save as DST(?)HUE(?)\_DUL\_\[0-3\]-IMAGE.---
+"DUL" -> for B, G, R of each pixel: avg(og,127) ... 1, 2, 3, 4 iterations ... save as COL(?)\_DUL\_\[0-3\]-IMAGE.---
 
-"EXT" -> for B, G, R of each pixel: avg(og,0) if og<128 else avg(og,255) ... 1, 2, 3, 4 iterations ... save as DST(?)HUE(?)\_EXT\_\[0-3\]-IMAGE.---
+"EXT" -> for B, G, R of each pixel: avg(og,0) if og<128 else avg(og,255) ... 1, 2, 3, 4 iterations ... save as COL(?)\_EXT\_\[0-3\]-IMAGE.---
 
 ### Requirements:
 <code>pip install requests</code>
@@ -27,7 +27,7 @@ output/
   DIR-ANOTHER_IMAGE.jpg/
     ...
   DIR-IMAGE.png/
-    COL/  # Color channel toggling + invert + grayscale
+    COL/  # Color channel toggling + invert + grayscale (+ color dulling and extremities)
       COL_INV-IMAGE.png
       COL_BNW-IMAGE.png
       COL_RED-IMAGE.png
