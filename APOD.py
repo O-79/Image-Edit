@@ -30,6 +30,7 @@ class APOD:
             else:
                 print(f"{RES.status_code}")
                 print(RES.text)
+                exit()
         except Exception as e:
             print(f"{e}")
 

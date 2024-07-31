@@ -49,6 +49,21 @@ if __name__ == "__main__":
     else:
         IMG_NAME = APOD.GET_APOD()
     
+    _DST_ = 'y'#input("Distortion options? (Y / N): ")
+    if _DST_.lower() == 'y':
+        try:
+            _SIZ_ = int(input("Pixellation size? (e.g. 16 = 16px squares): "))
+            Edit.DST_PXL_IMG(IMG_NAME, _SIZ_)
+        except ValueError:
+            print("[LOG] PIXELLATION -> IGNORE -> Chosen pixellation size is not an integer!")
+        try:
+            _SIZ_ = int(input("Horizontal and vertical stretch? (e.g. 64 = 64px stretch): "))
+            Edit.DST_HOR_IMG(IMG_NAME, _SIZ_)
+            Edit.DST_VER_IMG(IMG_NAME, _SIZ_)
+        except ValueError:
+            print("[LOG] HORIZONTAL / VERTICAL STRETCH -> IGNORE -> Chosen pixellation / stretch size is not an integer!")
+        Edit.DST_MIX_IMG(IMG_NAME)
+    
     _HUE_ = 'y'#input("Hue specturm? (Y / N): ")
     if _HUE_.lower() == 'y':
         for _i_ in range (1, 6):
@@ -56,14 +71,14 @@ if __name__ == "__main__":
     
     _COL_ = 'y'#input("Toggled color channels? (Y / N): ")
     if _COL_.lower() == 'y':
-        Edit.INV_IMG(IMG_NAME)
-        Edit.BNW_IMG(IMG_NAME)
-        Edit.RED_IMG(IMG_NAME)
-        Edit.GRE_IMG(IMG_NAME)
-        Edit.BLU_IMG(IMG_NAME)
-        Edit.CYA_IMG(IMG_NAME)
-        Edit.PUR_IMG(IMG_NAME)
-        Edit.YEL_IMG(IMG_NAME)
+        Edit.COL_INV_IMG(IMG_NAME)
+        Edit.COL_BNW_IMG(IMG_NAME)
+        Edit.COL_RED_IMG(IMG_NAME)
+        Edit.COL_GRE_IMG(IMG_NAME)
+        Edit.COL_BLU_IMG(IMG_NAME)
+        Edit.COL_CYA_IMG(IMG_NAME)
+        Edit.COL_PUR_IMG(IMG_NAME)
+        Edit.COL_YEL_IMG(IMG_NAME)
 
     _HLT_ = 'y'#input("Highlight color channels? (Y / N): ")
     if _HLT_.lower() == 'y':
@@ -78,12 +93,4 @@ if __name__ == "__main__":
         BAL = True if _BAL_.lower() == 'y' else False
         Edit.HLT_ALL_IMG(IMG_NAME, BAL)
 
-    _DST_ = 'y'#input("Distortion options? (Y / N): ")
-    if _DST_.lower() == 'y':
-        try:
-            PXL_AMT = int(input("Pixellation? (e.g. 16 = 16px squares): "))
-            Edit.PXL_IMG(IMG_NAME, PXL_AMT)
-        except ValueError:
-            print("[LOG] PIXELLATION -> IGNORE -> Chosen pixellation size is not an integer!")
-
-    print(f"See output/DIR-{IMG_NAME}/")
+    print(f"\nSee output/DIR-{IMG_NAME}/")
