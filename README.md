@@ -4,6 +4,7 @@
 <code>TODO:</code>
 
 "DUL" -> for B, G, R of each pixel: avg(og,127) ... 1, 2, 3, 4 iterations ... save as DST(?)HUE(?)\_DUL\_\[0-3\]-IMAGE.---
+
 "EXT" -> for B, G, R of each pixel: avg(og,0) if og<128 else avg(og,255) ... 1, 2, 3, 4 iterations ... save as DST(?)HUE(?)\_EXT\_\[0-3\]-IMAGE.---
 
 ### Requirements:
