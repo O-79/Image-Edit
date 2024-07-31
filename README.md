@@ -29,8 +29,8 @@ output/
       DST_VER-IMAGE.png
       DST_MIX_0-IMAGE.png
       DST_MIX_1-IMAGE.png
-      DST-MIX_2-IMAGE.png
-      DST-MIX_3-IMAGE.png
+      DST_MIX_2-IMAGE.png
+      DST_MIX_3-IMAGE.png
     HLT/  # Color channel highlighting
       HLT_ALL-IMAGE.png
       HLT_RED-IMAGE.png
