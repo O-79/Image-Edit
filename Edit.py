@@ -361,7 +361,7 @@ class Edit:
             CYA = np.array([255, 255, 0])
             BLU = np.array([255, 0, 0])
             PUR = np.array([255, 0, 255])
-            N_A = np.array([255, 255, 255])
+            EQL = np.array([255, 255, 255])
 
             FND_RED = np.all(IMG_BGR == RED, axis=-1)
             FND_YEL = np.all(IMG_BGR == YEL, axis=-1)
@@ -369,7 +369,7 @@ class Edit:
             FND_CYA = np.all(IMG_BGR == CYA, axis=-1)
             FND_BLU = np.all(IMG_BGR == BLU, axis=-1)
             FND_PUR = np.all(IMG_BGR == PUR, axis=-1)
-            FND_N_A = np.all(IMG_BGR == N_A, axis=-1)
+            FND_EQL = np.all(IMG_BGR == EQL, axis=-1)
 
             NUM_RED = np.sum(FND_RED)
             NUM_YEL = np.sum(FND_YEL)
@@ -377,9 +377,9 @@ class Edit:
             NUM_CYA = np.sum(FND_CYA)
             NUM_BLU = np.sum(FND_BLU)
             NUM_PUR = np.sum(FND_PUR)
-            NUM_N_A = np.sum(FND_N_A)
+            NUM_EQL = np.sum(FND_EQL)
             
-            TOT = (HGT * WID) - NUM_N_A
+            TOT = (HGT * WID) - NUM_EQL
             
             BAL_RED = round(float(100 * (NUM_RED / TOT)), 1)
             BAL_YEL = round(float(100 * (NUM_YEL / TOT)), 1)
