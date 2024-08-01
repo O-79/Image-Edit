@@ -25,7 +25,7 @@ output/
   DIR-ANOTHER_IMAGE.jpg/
     ...
   DIR-IMAGE.png/
-    COL/  # Color channel toggling + invert + grayscale + color dulling and saturating
+    COL/  # Color channel toggling, invert, grayscale, dulling, saturating
       COL_DUL_0-IMAGE.png
       COL_DUL_1-IMAGE.png
       COL_DUL_2-IMAGE.png
@@ -42,7 +42,7 @@ output/
       COL_CYA-IMAGE.PNG
       COL_BLU-IMAGE.png
       COL_PUR-IMAGE.png
-    DST/  # Distortions: pixellation, stretching (horizontal & vertical), randomization (4 outputs)
+    DST/  # Pixellation, stretching (horizontal & vertical), randomization (4 outputs)
       DST_PXL-IMAGE.png
       DST_HOR-IMAGE.png
       DST_VER-IMAGE.png
