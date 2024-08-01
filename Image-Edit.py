@@ -82,7 +82,7 @@ class ImageViewer(QMainWindow):
         self.MGR.EXP(self.OLD_PATH)
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    APP = QApplication(sys.argv)
     VIEW = ImageViewer()
     VIEW.show()
-    sys.exit(app.exec())
+    sys.exit(APP.exec())
