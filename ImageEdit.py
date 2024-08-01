@@ -39,7 +39,7 @@ class ImageEdit(QMainWindow):
         TBR.addAction(self.BUT_BLR)
 
         self.BUT_EXP = QAction('Export', self)
-        self.BUT_EXP.triggered.connect(self.EXP_CALL)
+        self.BUT_EXP.triggered.connect(self.IMG_EXP)
         self.BUT_EXP.setEnabled(False)
         TBR.addAction(self.BUT_EXP)
 
@@ -78,7 +78,7 @@ class ImageEdit(QMainWindow):
             self.MGR.BLR_SIZ = SIZ
             print(f"[LOG] SETUP -> Blur size set to: {self.MGR.BLR_SIZ}")
 
-    def EXP_CALL(self):
+    def IMG_EXP(self):
         self.MGR.EXP(self.OLD_PATH)
 
 if __name__ == '__main__':
