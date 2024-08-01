@@ -47,7 +47,7 @@ output/
       COL_CYA-IMAGE.PNG
       COL_BLU-IMAGE.png
       COL_PUR-IMAGE.png
-    DST/  # Pixellation, stretching (horizontal & vertical), randomization (4 outputs)
+    DST/  # Pixellation, blurring (horizontal & vertical), randomization (4 outputs)
       DST_PXL-IMAGE.png
       DST_HOR-IMAGE.png
       DST_VER-IMAGE.png
