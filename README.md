@@ -6,6 +6,8 @@
 N / A
 
 ### Requirements:
+<code>pip install PyQt6</code>
+
 <code>pip install requests</code>
 
 <code>pip install opencv-python</code>
