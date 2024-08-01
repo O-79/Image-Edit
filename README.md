@@ -3,9 +3,7 @@
 
 <code>TODO:</code>
 
-"DUL" -> for B, G, R of each pixel: avg(og,127) ... 1, 2, 3, 4 iterations ... save as COL\_DUL\_\[0-3\]-IMAGE.---
-
-"SAT" -> for B, G, R of each pixel: avg(og,0) if og<128 else avg(og,255) ... 1, 2, 3, 4 iterations ... save as COL\_SAT\_\[0-3\]-IMAGE.---
+N / A
 
 ### Requirements:
 <code>pip install requests</code>
@@ -27,7 +25,15 @@ output/
   DIR-ANOTHER_IMAGE.jpg/
     ...
   DIR-IMAGE.png/
-    COL/  # Color channel toggling + invert + grayscale (+ color dulling and saturating)
+    COL/  # Color channel toggling + invert + grayscale + color dulling and saturating
+      COL_DUL_0-IMAGE.png
+      COL_DUL_1-IMAGE.png
+      COL_DUL_2-IMAGE.png
+      COL_DUL_3-IMAGE.png
+      COL_SAT_0-IMAGE.png
+      COL_SAT_1-IMAGE.png
+      COL_SAT_2-IMAGE.png
+      COL_SAT_3-IMAGE.png
       COL_INV-IMAGE.png
       COL_BNW-IMAGE.png
       COL_RED-IMAGE.png
