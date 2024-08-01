@@ -4,25 +4,24 @@ import numpy as np
 import random
 
 class Edit:
-    def HUE_IMG(IMG_PATH, HUE):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:])
+    def HUE_IMG(IMG_PATH, OLD_PATH, HUE):
+        IMG_BGR = cv2.imread(OLD_PATH)
 
         IMG_HSV = cv2.cvtColor(IMG_BGR, cv2.COLOR_BGR2HSV)
         IMG_HSV[..., 0] = (IMG_HSV[..., 0] + HUE) % 180
         IMG_BGR = cv2.cvtColor(IMG_HSV, cv2.COLOR_HSV2BGR)
 
-        HUE_PATH = f'{IMG_PATH}\\HUE\\HUE_{HUE}-{os.path.basename(IMG_PATH)}'
+        HUE_PATH = f'{IMG_PATH}\\HUE\\HUE_{int(HUE)}-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(HUE_PATH, IMG_BGR)
 
-    def DST_PXL_IMG(IMG_PATH, SIZ):
-        print(IMG_PATH)
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def DST_PXL_IMG(IMG_PATH, OLD_PATH, SIZ):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         HGT, WID, COL = IMG_BGR.shape
         
         if SIZ == 1:
             IMG_BGR = IMG_BGR.astype(np.uint8)
-            DST_PXL_PATH = f'{IMG_PATH}\\DST\\DST_PXL-{os.path.basename(IMG_PATH)}'
+            DST_PXL_PATH = f'{IMG_PATH}\\DST\\DST_PXL-{os.path.basename(OLD_PATH)}'
             cv2.imwrite(DST_PXL_PATH, IMG_BGR)
             return
         if HGT < SIZ or WID < SIZ:
@@ -46,21 +45,21 @@ class Edit:
                     IMG_BGR[ROW, COL] = PXL
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        DST_PXL_PATH = f'{IMG_PATH}\\DST\\DST_PXL-{os.path.basename(IMG_PATH)}'
+        DST_PXL_PATH = f'{IMG_PATH}\\DST\\DST_PXL-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(DST_PXL_PATH, IMG_BGR)
 
-    def DST_HOR_IMG(IMG_PATH, SIZ):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def DST_HOR_IMG(IMG_PATH, OLD_PATH, SIZ):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         HGT, WID, COL = IMG_BGR.shape
         
         if SIZ == 1:
             IMG_BGR = IMG_BGR.astype(np.uint8)
-            DST_PXL_PATH = f'{IMG_PATH}\\DST\\DST_HOR-{os.path.basename(IMG_PATH)}'
+            DST_PXL_PATH = f'{IMG_PATH}\\DST\\DST_HOR-{os.path.basename(OLD_PATH)}'
             cv2.imwrite(DST_PXL_PATH, IMG_BGR)
             return
         if WID < SIZ:
-            print("[LOG] HORIZONTAL STRETCH -> IGNORE -> Chosen horizontal stretch size is too large for selected image!")
+            print("[LOG] HORIZONTAL BLUR -> IGNORE -> Chosen horizontal blur size is too large for selected image!")
             return
         
         for ROW in range(HGT):
@@ -72,21 +71,21 @@ class Edit:
                     IMG_BGR[ROW, COL] = PXL
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        DST_HOR_PATH = f'{IMG_PATH}\\DST\\DST_HOR-{os.path.basename(IMG_PATH)}'
+        DST_HOR_PATH = f'{IMG_PATH}\\DST\\DST_HOR-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(DST_HOR_PATH, IMG_BGR)
 
-    def DST_VER_IMG(IMG_PATH, SIZ):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def DST_VER_IMG(IMG_PATH, OLD_PATH, SIZ):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         HGT, WID, COL = IMG_BGR.shape
         
         if SIZ == 1:
             IMG_BGR = IMG_BGR.astype(np.uint8)
-            DST_PXL_PATH = f'{IMG_PATH}\\DST\\DST_VER-{os.path.basename(IMG_PATH)}'
+            DST_PXL_PATH = f'{IMG_PATH}\\DST\\DST_VER-{os.path.basename(OLD_PATH)}'
             cv2.imwrite(DST_PXL_PATH, IMG_BGR)
             return
         if HGT < SIZ:
-            print("[LOG] VERTICAL STRETCH -> IGNORE -> Chosen vertical stretch size is too large for selected image!")
+            print("[LOG] VERTICAL BLUR -> IGNORE -> Chosen vertical blur size is too large for selected image!")
             return
         
         for COL in range(WID):
@@ -98,14 +97,14 @@ class Edit:
                     IMG_BGR[ROW, COL] = PXL
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        DST_VER_PATH = f'{IMG_PATH}\\DST\\DST_VER-{os.path.basename(IMG_PATH)}'
+        DST_VER_PATH = f'{IMG_PATH}\\DST\\DST_VER-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(DST_VER_PATH, IMG_BGR)
 
-    def DST_MIX_IMG(IMG_PATH):
-        IMG_BGR_0 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
-        IMG_BGR_1 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
-        IMG_BGR_2 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
-        IMG_BGR_3 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def DST_MIX_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR_0 = cv2.imread(OLD_PATH).astype(np.int16)
+        IMG_BGR_1 = cv2.imread(OLD_PATH).astype(np.int16)
+        IMG_BGR_2 = cv2.imread(OLD_PATH).astype(np.int16)
+        IMG_BGR_3 = cv2.imread(OLD_PATH).astype(np.int16)
 
         HGT, WID, COL = IMG_BGR_3.shape
         
@@ -120,20 +119,20 @@ class Edit:
         IMG_BGR_1 = IMG_BGR_1.astype(np.uint8)
         IMG_BGR_2 = IMG_BGR_2.astype(np.uint8)
         IMG_BGR_3 = IMG_BGR_3.astype(np.uint8)
-        DST_MIX_0_PATH = f'{IMG_PATH}\\DST\\DST_MIX_0-{os.path.basename(IMG_PATH)}'
-        DST_MIX_1_PATH = f'{IMG_PATH}\\DST\\DST_MIX_1-{os.path.basename(IMG_PATH)}'
-        DST_MIX_2_PATH = f'{IMG_PATH}\\DST\\DST_MIX_2-{os.path.basename(IMG_PATH)}'
-        DST_MIX_3_PATH = f'{IMG_PATH}\\DST\\DST_MIX_3-{os.path.basename(IMG_PATH)}'
+        DST_MIX_0_PATH = f'{IMG_PATH}\\DST\\DST_MIX_0-{os.path.basename(OLD_PATH)}'
+        DST_MIX_1_PATH = f'{IMG_PATH}\\DST\\DST_MIX_1-{os.path.basename(OLD_PATH)}'
+        DST_MIX_2_PATH = f'{IMG_PATH}\\DST\\DST_MIX_2-{os.path.basename(OLD_PATH)}'
+        DST_MIX_3_PATH = f'{IMG_PATH}\\DST\\DST_MIX_3-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(DST_MIX_0_PATH, IMG_BGR_0)
         cv2.imwrite(DST_MIX_1_PATH, IMG_BGR_1)
         cv2.imwrite(DST_MIX_2_PATH, IMG_BGR_2)
         cv2.imwrite(DST_MIX_3_PATH, IMG_BGR_3)
 
-    def COL_DUL_IMG(IMG_PATH):
-        IMG_BGR_0 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
-        IMG_BGR_1 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
-        IMG_BGR_2 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
-        IMG_BGR_3 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def COL_DUL_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR_0 = cv2.imread(OLD_PATH).astype(np.int16)
+        IMG_BGR_1 = cv2.imread(OLD_PATH).astype(np.int16)
+        IMG_BGR_2 = cv2.imread(OLD_PATH).astype(np.int16)
+        IMG_BGR_3 = cv2.imread(OLD_PATH).astype(np.int16)
 
         HGT, WID, COL = IMG_BGR_3.shape
         
@@ -162,20 +161,20 @@ class Edit:
         IMG_BGR_1 = IMG_BGR_1.astype(np.uint8)
         IMG_BGR_2 = IMG_BGR_2.astype(np.uint8)
         IMG_BGR_3 = IMG_BGR_3.astype(np.uint8)
-        COL_DUL_0_PATH = f'{IMG_PATH}\\COL\\COL_DUL_0-{os.path.basename(IMG_PATH)}'
-        COL_DUL_1_PATH = f'{IMG_PATH}\\COL\\COL_DUL_1-{os.path.basename(IMG_PATH)}'
-        COL_DUL_2_PATH = f'{IMG_PATH}\\COL\\COL_DUL_2-{os.path.basename(IMG_PATH)}'
-        COL_DUL_3_PATH = f'{IMG_PATH}\\COL\\COL_DUL_3-{os.path.basename(IMG_PATH)}'
+        COL_DUL_0_PATH = f'{IMG_PATH}\\COL\\COL_DUL_0-{os.path.basename(OLD_PATH)}'
+        COL_DUL_1_PATH = f'{IMG_PATH}\\COL\\COL_DUL_1-{os.path.basename(OLD_PATH)}'
+        COL_DUL_2_PATH = f'{IMG_PATH}\\COL\\COL_DUL_2-{os.path.basename(OLD_PATH)}'
+        COL_DUL_3_PATH = f'{IMG_PATH}\\COL\\COL_DUL_3-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(COL_DUL_0_PATH, IMG_BGR_0)
         cv2.imwrite(COL_DUL_1_PATH, IMG_BGR_1)
         cv2.imwrite(COL_DUL_2_PATH, IMG_BGR_2)
         cv2.imwrite(COL_DUL_3_PATH, IMG_BGR_3)
 
-    def COL_SAT_IMG(IMG_PATH):
-        IMG_BGR_0 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
-        IMG_BGR_1 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
-        IMG_BGR_2 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
-        IMG_BGR_3 = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def COL_SAT_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR_0 = cv2.imread(OLD_PATH).astype(np.int16)
+        IMG_BGR_1 = cv2.imread(OLD_PATH).astype(np.int16)
+        IMG_BGR_2 = cv2.imread(OLD_PATH).astype(np.int16)
+        IMG_BGR_3 = cv2.imread(OLD_PATH).astype(np.int16)
 
         HGT, WID, COL = IMG_BGR_3.shape
         
@@ -207,17 +206,17 @@ class Edit:
         IMG_BGR_1 = IMG_BGR_1.astype(np.uint8)
         IMG_BGR_2 = IMG_BGR_2.astype(np.uint8)
         IMG_BGR_3 = IMG_BGR_3.astype(np.uint8)
-        COL_SAT_0_PATH = f'{IMG_PATH}\\COL\\COL_SAT_0-{os.path.basename(IMG_PATH)}'
-        COL_SAT_1_PATH = f'{IMG_PATH}\\COL\\COL_SAT_1-{os.path.basename(IMG_PATH)}'
-        COL_SAT_2_PATH = f'{IMG_PATH}\\COL\\COL_SAT_2-{os.path.basename(IMG_PATH)}'
-        COL_SAT_3_PATH = f'{IMG_PATH}\\COL\\COL_SAT_3-{os.path.basename(IMG_PATH)}'
+        COL_SAT_0_PATH = f'{IMG_PATH}\\COL\\COL_SAT_0-{os.path.basename(OLD_PATH)}'
+        COL_SAT_1_PATH = f'{IMG_PATH}\\COL\\COL_SAT_1-{os.path.basename(OLD_PATH)}'
+        COL_SAT_2_PATH = f'{IMG_PATH}\\COL\\COL_SAT_2-{os.path.basename(OLD_PATH)}'
+        COL_SAT_3_PATH = f'{IMG_PATH}\\COL\\COL_SAT_3-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(COL_SAT_0_PATH, IMG_BGR_0)
         cv2.imwrite(COL_SAT_1_PATH, IMG_BGR_1)
         cv2.imwrite(COL_SAT_2_PATH, IMG_BGR_2)
         cv2.imwrite(COL_SAT_3_PATH, IMG_BGR_3)
 
-    def COL_BNW_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def COL_BNW_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         HGT, WID, COL = IMG_BGR.shape
         
@@ -231,11 +230,11 @@ class Edit:
                 IMG_BGR[ROW, COL] = np.array([B, G, R])
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        BNW_PATH = f'{IMG_PATH}\\COL\\COL_BNW-{os.path.basename(IMG_PATH)}'
+        BNW_PATH = f'{IMG_PATH}\\COL\\COL_BNW-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(BNW_PATH, IMG_BGR)
 
-    def COL_INV_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def COL_INV_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         B, G, R = cv2.split(IMG_BGR)
         B = np.clip(255 - B, 0, 255).astype(np.uint8)
@@ -244,74 +243,74 @@ class Edit:
         IMG_BGR = cv2.merge([B, G, R])
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        INV_PATH = f'{IMG_PATH}\\COL\\COL_INV-{os.path.basename(IMG_PATH)}'
+        INV_PATH = f'{IMG_PATH}\\COL\\COL_INV-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(INV_PATH, IMG_BGR)
 
-    def COL_BLU_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:])
+    def COL_BLU_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH)
 
         B, G, R = cv2.split(IMG_BGR)
         G = np.clip(G * 0, 0, 255).astype(np.uint8)
         R = np.clip(R * 0, 0, 255).astype(np.uint8)
         IMG_BGR = cv2.merge([B, G, R])
 
-        BLU_PATH = f'{IMG_PATH}\\COL\\COL_BLU-{os.path.basename(IMG_PATH)}'
+        BLU_PATH = f'{IMG_PATH}\\COL\\COL_BLU-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(BLU_PATH, IMG_BGR)
 
-    def COL_GRE_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:])
+    def COL_GRE_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH)
 
         B, G, R = cv2.split(IMG_BGR)
         B = np.clip(B * 0, 0, 255).astype(np.uint8)
         R = np.clip(R * 0, 0, 255).astype(np.uint8)
         IMG_BGR = cv2.merge([B, G, R])
 
-        GRE_PATH = f'{IMG_PATH}\\COL\\COL_GRE-{os.path.basename(IMG_PATH)}'
+        GRE_PATH = f'{IMG_PATH}\\COL\\COL_GRE-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(GRE_PATH, IMG_BGR)
 
-    def COL_RED_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:])
+    def COL_RED_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH)
 
         B, G, R = cv2.split(IMG_BGR)
         B = np.clip(B * 0, 0, 255).astype(np.uint8)
         G = np.clip(G * 0, 0, 255).astype(np.uint8)
         IMG_BGR = cv2.merge([B, G, R])
 
-        RED_PATH = f'{IMG_PATH}\\COL\\COL_RED-{os.path.basename(IMG_PATH)}'
+        RED_PATH = f'{IMG_PATH}\\COL\\COL_RED-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(RED_PATH, IMG_BGR)
 
-    def COL_YEL_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:])
+    def COL_YEL_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH)
 
         B, G, R = cv2.split(IMG_BGR)
         B = np.clip(B * 0, 0, 255).astype(np.uint8)
         IMG_BGR = cv2.merge([B, G, R])
 
-        YEL_PATH = f'{IMG_PATH}\\COL\\COL_YEL-{os.path.basename(IMG_PATH)}'
+        YEL_PATH = f'{IMG_PATH}\\COL\\COL_YEL-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(YEL_PATH, IMG_BGR)
 
-    def COL_PUR_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:])
+    def COL_PUR_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH)
 
         B, G, R = cv2.split(IMG_BGR)
         G = np.clip(G * 0, 0, 255).astype(np.uint8)
         IMG_BGR = cv2.merge([B, G, R])
 
-        PUR_PATH = f'{IMG_PATH}\\COL\\COL_PUR-{os.path.basename(IMG_PATH)}'
+        PUR_PATH = f'{IMG_PATH}\\COL\\COL_PUR-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(PUR_PATH, IMG_BGR)
 
-    def COL_CYA_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:])
+    def COL_CYA_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH)
 
         B, G, R = cv2.split(IMG_BGR)
         R = np.clip(R * 0, 0, 255).astype(np.uint8)
         IMG_BGR = cv2.merge([B, G, R])
 
-        CYA_PATH = f'{IMG_PATH}\\COL\\COL_CYA-{os.path.basename(IMG_PATH)}'
+        CYA_PATH = f'{IMG_PATH}\\COL\\COL_CYA-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(CYA_PATH, IMG_BGR)
 
-    def HLT_BLU_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def HLT_BLU_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         B, G, R = cv2.split(IMG_BGR)
 
@@ -319,11 +318,11 @@ class Edit:
         IMG_BGR[HLT_BLU] = [255, 0, 0]
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        HLT_BLU_PATH = f'{IMG_PATH}\\HLT\\HLT_BLU-{os.path.basename(IMG_PATH)}'
+        HLT_BLU_PATH = f'{IMG_PATH}\\HLT\\HLT_BLU-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(HLT_BLU_PATH, IMG_BGR)
 
-    def HLT_GRE_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def HLT_GRE_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         B, G, R = cv2.split(IMG_BGR)
 
@@ -331,11 +330,11 @@ class Edit:
         IMG_BGR[HLT_GRE] = [0, 255, 0]
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        HLT_GRE_PATH = f'{IMG_PATH}\\HLT\\HLT_GRE-{os.path.basename(IMG_PATH)}'
+        HLT_GRE_PATH = f'{IMG_PATH}\\HLT\\HLT_GRE-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(HLT_GRE_PATH, IMG_BGR)
 
-    def HLT_RED_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def HLT_RED_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         B, G, R = cv2.split(IMG_BGR)
 
@@ -343,11 +342,11 @@ class Edit:
         IMG_BGR[HLT_RED] = [0, 0, 255]
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        HLT_RED_PATH = f'{IMG_PATH}\\HLT\\HLT_RED-{os.path.basename(IMG_PATH)}'
+        HLT_RED_PATH = f'{IMG_PATH}\\HLT\\HLT_RED-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(HLT_RED_PATH, IMG_BGR)
 
-    def HLT_YEL_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def HLT_YEL_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         B, G, R = cv2.split(IMG_BGR)
 
@@ -360,11 +359,11 @@ class Edit:
         IMG_BGR[HLT_YEL] = [0, 255, 255]
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        HLT_YEL_PATH = f'{IMG_PATH}\\HLT\\HLT_YEL-{os.path.basename(IMG_PATH)}'
+        HLT_YEL_PATH = f'{IMG_PATH}\\HLT\\HLT_YEL-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(HLT_YEL_PATH, IMG_BGR)
 
-    def HLT_PUR_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def HLT_PUR_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         B, G, R = cv2.split(IMG_BGR)
 
@@ -377,11 +376,11 @@ class Edit:
         IMG_BGR[HLT_PUR] = [255, 0, 255]
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        HLT_PUR_PATH = f'{IMG_PATH}\\HLT\\HLT_PUR-{os.path.basename(IMG_PATH)}'
+        HLT_PUR_PATH = f'{IMG_PATH}\\HLT\\HLT_PUR-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(HLT_PUR_PATH, IMG_BGR)
 
-    def HLT_CYA_IMG(IMG_PATH):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def HLT_CYA_IMG(IMG_PATH, OLD_PATH):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         B, G, R = cv2.split(IMG_BGR)
 
@@ -394,11 +393,11 @@ class Edit:
         IMG_BGR[HLT_CYA] = [255, 255, 0]
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        HLT_CYA_PATH = f'{IMG_PATH}\\HLT\\HLT_CYA-{os.path.basename(IMG_PATH)}'
+        HLT_CYA_PATH = f'{IMG_PATH}\\HLT\\HLT_CYA-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(HLT_CYA_PATH, IMG_BGR)
 
-    def HLT_ALL_IMG(IMG_PATH, BAL):
-        IMG_BGR = cv2.imread(os.path.basename(IMG_PATH)[4:]).astype(np.int16)
+    def HLT_ALL_IMG(IMG_PATH, OLD_PATH, BAL):
+        IMG_BGR = cv2.imread(OLD_PATH).astype(np.int16)
 
         B, G, R = cv2.split(IMG_BGR)
 
@@ -456,12 +455,12 @@ class Edit:
             
             TOT = (HGT * WID) - NUM_EQL
             
-            BAL_RED = round(float(100 * (NUM_RED / TOT)), 1)
-            BAL_YEL = round(float(100 * (NUM_YEL / TOT)), 1)
-            BAL_GRE = round(float(100 * (NUM_GRE / TOT)), 1)
-            BAL_CYA = round(float(100 * (NUM_CYA / TOT)), 1)
-            BAL_BLU = round(float(100 * (NUM_BLU / TOT)), 1)
-            BAL_PUR = round(float(100 * (NUM_PUR / TOT)), 1)
+            BAL_RED = round(float(100 * (NUM_RED / TOT)), 1) if TOT > 0 else 0
+            BAL_YEL = round(float(100 * (NUM_YEL / TOT)), 1) if TOT > 0 else 0
+            BAL_GRE = round(float(100 * (NUM_GRE / TOT)), 1) if TOT > 0 else 0
+            BAL_CYA = round(float(100 * (NUM_CYA / TOT)), 1) if TOT > 0 else 0
+            BAL_BLU = round(float(100 * (NUM_BLU / TOT)), 1) if TOT > 0 else 0
+            BAL_PUR = round(float(100 * (NUM_PUR / TOT)), 1) if TOT > 0 else 0
             
             BAL_COL_LST = [BAL_RED, BAL_YEL, BAL_GRE, BAL_CYA, BAL_BLU, BAL_PUR]
             BAL_COL_VAR = round(16 - np.std(BAL_COL_LST), 1)
@@ -472,7 +471,7 @@ class Edit:
             else:
                 BAL_COL_VAR_TYP = 'POOR'
 
-            BAL_PATH = f'{IMG_PATH}\\BAL-{os.path.basename(IMG_PATH)}.txt'
+            BAL_PATH = f'{IMG_PATH}\\BAL-{os.path.basename(OLD_PATH)}.txt'
             with open(BAL_PATH, 'w') as F:
                 F.write("Color Balance Report\n")
                 F.write("--------------------------------\n")
@@ -492,5 +491,5 @@ class Edit:
                 F.write("--------------------------------\n")
 
         IMG_BGR = IMG_BGR.astype(np.uint8)
-        HLT_ALL_PATH = f'{IMG_PATH}\\HLT\\HLT_ALL-{os.path.basename(IMG_PATH)}'
+        HLT_ALL_PATH = f'{IMG_PATH}\\HLT\\HLT_ALL-{os.path.basename(OLD_PATH)}'
         cv2.imwrite(HLT_ALL_PATH, IMG_BGR)

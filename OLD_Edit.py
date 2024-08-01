@@ -11,7 +11,7 @@ class Edit:
         IMG_HSV[..., 0] = (IMG_HSV[..., 0] + HUE) % 180
         IMG_BGR = cv2.cvtColor(IMG_HSV, cv2.COLOR_HSV2BGR)
 
-        HUE_PATH = f'output\\DIR-{IMG_NAME}\\HUE\\HUE_{HUE}-{IMG_NAME}'
+        HUE_PATH = f'output\\DIR-{IMG_NAME}\\HUE\\HUE_{int(HUE)}-{IMG_NAME}'
         cv2.imwrite(HUE_PATH, IMG_BGR)
 
     def DST_PXL_IMG(IMG_NAME, SIZ):
@@ -61,7 +61,7 @@ class Edit:
             cv2.imwrite(DST_PXL_PATH, IMG_BGR)
             return
         if WID < SIZ:
-            print("[LOG] HORIZONTAL STRETCH -> IGNORE -> Chosen horizontal stretch size is too large for selected image!")
+            print("[LOG] HORIZONTAL BLUR -> IGNORE -> Chosen horizontal blur size is too large for selected image!")
             return
         
         for ROW in range(HGT):
@@ -88,7 +88,7 @@ class Edit:
             cv2.imwrite(DST_PXL_PATH, IMG_BGR)
             return
         if HGT < SIZ:
-            print("[LOG] VERTICAL STRETCH -> IGNORE -> Chosen vertical stretch size is too large for selected image!")
+            print("[LOG] VERTICAL BLUR -> IGNORE -> Chosen vertical blur size is too large for selected image!")
             return
         
         for COL in range(WID):
@@ -476,12 +476,12 @@ class Edit:
             
             TOT = (HGT * WID) - NUM_EQL
             
-            BAL_RED = round(float(100 * (NUM_RED / TOT)), 1)
-            BAL_YEL = round(float(100 * (NUM_YEL / TOT)), 1)
-            BAL_GRE = round(float(100 * (NUM_GRE / TOT)), 1)
-            BAL_CYA = round(float(100 * (NUM_CYA / TOT)), 1)
-            BAL_BLU = round(float(100 * (NUM_BLU / TOT)), 1)
-            BAL_PUR = round(float(100 * (NUM_PUR / TOT)), 1)
+            BAL_RED = round(float(100 * (NUM_RED / TOT)), 1) if TOT > 0 else 0
+            BAL_YEL = round(float(100 * (NUM_YEL / TOT)), 1) if TOT > 0 else 0
+            BAL_GRE = round(float(100 * (NUM_GRE / TOT)), 1) if TOT > 0 else 0
+            BAL_CYA = round(float(100 * (NUM_CYA / TOT)), 1) if TOT > 0 else 0
+            BAL_BLU = round(float(100 * (NUM_BLU / TOT)), 1) if TOT > 0 else 0
+            BAL_PUR = round(float(100 * (NUM_PUR / TOT)), 1) if TOT > 0 else 0
             
             BAL_COL_LST = [BAL_RED, BAL_YEL, BAL_GRE, BAL_CYA, BAL_BLU, BAL_PUR]
             BAL_COL_VAR = round(16 - np.std(BAL_COL_LST), 1)

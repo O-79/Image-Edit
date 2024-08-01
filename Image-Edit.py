@@ -26,11 +26,15 @@ class ImageViewer(QMainWindow):
         self.open_button.triggered.connect(self.FND_IMG)
         toolbar.addAction(self.open_button)
 
+        self.hues_button = QAction('Hues', self)
+        self.hues_button.triggered.connect(self.SET_HUE_SIZ)
+        toolbar.addAction(self.hues_button)
+
         self.pixellation_button = QAction('Pixellation', self)
         self.pixellation_button.triggered.connect(self.SET_PXL_SIZ)
         toolbar.addAction(self.pixellation_button)
 
-        self.blur_button = QAction('Stretch', self)
+        self.blur_button = QAction('Blur', self)
         self.blur_button.triggered.connect(self.SET_BLR_SIZ)
         toolbar.addAction(self.blur_button)
 
@@ -45,30 +49,37 @@ class ImageViewer(QMainWindow):
 
         self.setStyleSheet(Styles.MISC_0)
 
-        self.MGR = Manager(1, 1)
+        self.MGR = Manager(6, 1, 1)
 
     def FND_IMG(self):
-        IMG_PATH_FULL, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.jpeg)")
-        self.IMG_NAME = os.path.basename(IMG_PATH_FULL)
-        if self.IMG_NAME:
+        self.OLD_PATH, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.jpeg)")
+        if self.OLD_PATH:
             self.exp_button.setEnabled(True)
-            PIX_MAP = QPixmap(self.IMG_NAME)
+            PIX_MAP = QPixmap(self.OLD_PATH)
             self.image_label.setPixmap(PIX_MAP.scaled(self.image_label.size(), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.FastTransformation))
+
+    def SET_HUE_SIZ(self):
+        #  15,  30,  45,  60,  75,  90,  105,  120,  135,  150
+        #       30,       60,       90,        120,        150
+        SIZ, ok = QInputDialog.getInt(self, "Hue Iterations", f"Enter number of hue iterations:", min=2, max=11)
+        if ok:
+            self.MGR.HUE_SIZ = SIZ
+            print(f"[LOG] SETUP -> Hue iteration count set to: {self.MGR.HUE_SIZ}")
 
     def SET_PXL_SIZ(self):
         SIZ, ok = QInputDialog.getInt(self, "Pixellation Size", "Enter pixellation size:", min=1)
         if ok:
             self.MGR.PXL_SIZ = SIZ
-            print(f"Pixellation size set to: {self.MGR.PXL_SIZ}")
+            print(f"[LOG] SETUP -> Pixellation size set to: {self.MGR.PXL_SIZ}")
 
     def SET_BLR_SIZ(self):
-        SIZ, ok = QInputDialog.getInt(self, "Stretch Size", "Enter blur size:", min=1)
+        SIZ, ok = QInputDialog.getInt(self, "Blur Size", "Enter blur size:", min=1)
         if ok:
             self.MGR.BLR_SIZ = SIZ
-            print(f"Stretch size set to: {self.MGR.BLR_SIZ}")
+            print(f"[LOG] SETUP -> Blur size set to: {self.MGR.BLR_SIZ}")
 
     def EXP_CALL(self):
-        self.MGR.EXP(self.IMG_NAME)
+        self.MGR.EXP(self.OLD_PATH)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
