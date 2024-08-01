@@ -15,37 +15,37 @@ class ImageViewer(QMainWindow):
         self.setWindowTitle('Image-Edit v1.0')
         self.setGeometry(100, 50, 800, 600)
 
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
-        layout = QVBoxLayout(central_widget)
+        WGT_MAIN = QWidget()
+        self.setCentralWidget(WGT_MAIN)
+        LAY_MAIN = QVBoxLayout(WGT_MAIN)
 
-        toolbar = QToolBar()
-        self.addToolBar(toolbar)
+        TBR = QToolBar()
+        self.addToolBar(TBR)
 
-        self.open_button = QAction('Open', self)
-        self.open_button.triggered.connect(self.FND_IMG)
-        toolbar.addAction(self.open_button)
+        self.BUT_OPN = QAction('Open', self)
+        self.BUT_OPN.triggered.connect(self.FND_IMG)
+        TBR.addAction(self.BUT_OPN)
 
-        self.hues_button = QAction('Hues', self)
-        self.hues_button.triggered.connect(self.SET_HUE_SIZ)
-        toolbar.addAction(self.hues_button)
+        self.BUT_HUE = QAction('Hues', self)
+        self.BUT_HUE.triggered.connect(self.SET_HUE_SIZ)
+        TBR.addAction(self.BUT_HUE)
 
-        self.pixellation_button = QAction('Pixellation', self)
-        self.pixellation_button.triggered.connect(self.SET_PXL_SIZ)
-        toolbar.addAction(self.pixellation_button)
+        self.BUT_PXL = QAction('Pixellation', self)
+        self.BUT_PXL.triggered.connect(self.SET_PXL_SIZ)
+        TBR.addAction(self.BUT_PXL)
 
-        self.blur_button = QAction('Blur', self)
-        self.blur_button.triggered.connect(self.SET_BLR_SIZ)
-        toolbar.addAction(self.blur_button)
+        self.BUT_BLR = QAction('Blur', self)
+        self.BUT_BLR.triggered.connect(self.SET_BLR_SIZ)
+        TBR.addAction(self.BUT_BLR)
 
-        self.exp_button = QAction('Export', self)
-        self.exp_button.triggered.connect(self.EXP_CALL)
-        self.exp_button.setEnabled(False)
-        toolbar.addAction(self.exp_button)
+        self.BUT_EXP = QAction('Export', self)
+        self.BUT_EXP.triggered.connect(self.EXP_CALL)
+        self.BUT_EXP.setEnabled(False)
+        TBR.addAction(self.BUT_EXP)
 
-        self.image_label = QLabel()
-        self.image_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.addWidget(self.image_label)
+        self.LBL_IMG = QLabel()
+        self.LBL_IMG.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        LAY_MAIN.addWidget(self.LBL_IMG)
 
         self.setStyleSheet(Styles.MISC_0)
 
@@ -54,9 +54,9 @@ class ImageViewer(QMainWindow):
     def FND_IMG(self):
         self.OLD_PATH, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.jpeg)")
         if self.OLD_PATH:
-            self.exp_button.setEnabled(True)
+            self.BUT_EXP.setEnabled(True)
             PIX_MAP = QPixmap(self.OLD_PATH)
-            self.image_label.setPixmap(PIX_MAP.scaled(self.image_label.size(), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.FastTransformation))
+            self.LBL_IMG.setPixmap(PIX_MAP.scaled(self.LBL_IMG.size(), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.FastTransformation))
 
     def SET_HUE_SIZ(self):
         #  15,  30,  45,  60,  75,  90,  105,  120,  135,  150
