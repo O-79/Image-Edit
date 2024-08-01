@@ -15,7 +15,7 @@ N / A
 <code>pip install numpy</code>
 
 ### Run in GUI:
-<code>python Image-Edit.py</code>
+<code>python ImageEdit.py</code>
 
 ### Run in CLI:
 <code>python OLD_Control.py</code>
