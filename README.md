@@ -6,14 +6,19 @@
 N / A
 
 ### Requirements:
+<code>pip install PyQt6</code>
+
 <code>pip install requests</code>
 
 <code>pip install opencv-python</code>
 
 <code>pip install numpy</code>
 
+### Run in GUI:
+<code>python Image-Edit.py</code>
+
 ### Run in CLI:
-<code>python Control.py</code>
+<code>python OLD_Control.py</code>
 
 Y -> Provide image (.jpeg, .jpg, .png) in root directory.
 
