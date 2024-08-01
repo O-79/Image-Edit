@@ -9,7 +9,7 @@ class APOD:
 
     APOD_URL = 'https://api.nasa.gov/planetary/apod'
     
-    RESOURCES_PATH = 'output'
+    OUTPUT_PATH = 'output'
 
     @staticmethod
     def GET_APOD():
@@ -44,7 +44,7 @@ class APOD:
             
             IMG_NAME = f"{NAME.upper().replace(' ', '_').replace('-', '_').replace('\\', '_').replace('/', '_').replace(':', '_').replace('*', '_').replace('?', '_').replace('\"', '_').replace('<', '_').replace('>', '_').replace('|', '_')}.png"
             
-            IMG_PATH = os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}')
+            IMG_PATH = os.path.join(APOD.OUTPUT_PATH, f'DIR-{IMG_NAME}')
             if not os.path.exists(IMG_PATH):
                 os.makedirs(IMG_PATH)
             
