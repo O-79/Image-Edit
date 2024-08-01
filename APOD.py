@@ -39,27 +39,26 @@ class APOD:
     @staticmethod
     def GET_IMG(URL, NAME):
         try:
-            if not os.path.exists(APOD.RESOURCES_PATH):
-                os.makedirs(APOD.RESOURCES_PATH)
+            if not os.path.exists(DEBUG_PATH):
+                os.makedirs(DEBUG_PATH)
             
             IMG_NAME = f"{NAME.upper().replace(' ', '_').replace('-', '_').replace('\\', '_').replace('/', '_').replace(':', '_').replace('*', '_').replace('?', '_').replace('\"', '_').replace('<', '_').replace('>', '_').replace('|', '_')}.png"
             
-            if not os.path.exists(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}')):
-                os.makedirs(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'))
+            IMG_PATH = os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}')
+            if not os.path.exists(IMG_PATH):
+                os.makedirs(IMG_PATH)
             
-            if not os.path.exists(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'HUE')):
-                os.makedirs(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'HUE'))
+            if not os.path.exists(os.path.join(IMG_PATH, 'HUE')):
+                os.makedirs(os.path.join(IMG_PATH, 'HUE'))
             
-            if not os.path.exists(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'COL')):
-                os.makedirs(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'COL'))
+            if not os.path.exists(os.path.join(IMG_PATH, 'COL')):
+                os.makedirs(os.path.join(IMG_PATH, 'COL'))
             
-            if not os.path.exists(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'HLT')):
-                os.makedirs(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'HLT'))
+            if not os.path.exists(os.path.join(IMG_PATH, 'HLT')):
+                os.makedirs(os.path.join(IMG_PATH, 'HLT'))
                 
-            if not os.path.exists(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'DST')):
-                os.makedirs(os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), 'DST'))
-            
-            IMG_PATH = os.path.join(os.path.join(APOD.RESOURCES_PATH, f'DIR-{IMG_NAME}'), IMG_NAME)
+            if not os.path.exists(os.path.join(IMG_PATH, 'DST')):
+                os.makedirs(os.path.join(IMG_PATH, 'DST'))
             
             IMG_DAT = requests.get(URL).content
             with open(IMG_PATH, 'wb') as IMG_F:
