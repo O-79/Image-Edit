@@ -1,4 +1,4 @@
-# Image Color Recognition, Balancing, Distortion, and more
+# Image-Edit: Image Color Recognition, Balancing, Distortion, and more
 <em>Author: Adi</em><br/>
 
 <code>TODO:</code>
