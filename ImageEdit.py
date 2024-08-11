@@ -30,7 +30,7 @@ class ImageEdit(QMainWindow):
         self.BUT_HUE.triggered.connect(self.SET_HUE_SIZ)
         TBR.addAction(self.BUT_HUE)
 
-        self.BUT_PXL = QAction('Pixellation', self)
+        self.BUT_PXL = QAction('Pixelation', self)
         self.BUT_PXL.triggered.connect(self.SET_PXL_SIZ)
         TBR.addAction(self.BUT_PXL)
 
@@ -67,10 +67,10 @@ class ImageEdit(QMainWindow):
             print(f"[LOG] SETUP -> Hue iteration count set to: {self.MGR.HUE_SIZ}")
 
     def SET_PXL_SIZ(self):
-        SIZ, ok = QInputDialog.getInt(self, "Pixellation Size", "Enter pixellation size:", min=1)
+        SIZ, ok = QInputDialog.getInt(self, "Pixelation Size", "Enter pixelation size:", min=1)
         if ok:
             self.MGR.PXL_SIZ = SIZ
-            print(f"[LOG] SETUP -> Pixellation size set to: {self.MGR.PXL_SIZ}")
+            print(f"[LOG] SETUP -> Pixelation size set to: {self.MGR.PXL_SIZ}")
 
     def SET_BLR_SIZ(self):
         SIZ, ok = QInputDialog.getInt(self, "Blur Size", "Enter blur size:", min=1)

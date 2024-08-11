@@ -26,7 +26,7 @@ class Edit:
             cv2.imwrite(DST_PXL_PATH, IMG_BGR)
             return
         if HGT < SIZ or WID < SIZ:
-            print("[LOG] PIXELLATION -> IGNORE -> Chosen pixellation size is too large for selected image!")
+            print("[LOG] PIXELLATION -> IGNORE -> Chosen pixelation size is too large for selected image!")
             return
         
         for ROW in range(HGT):

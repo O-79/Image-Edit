@@ -54,16 +54,16 @@ if __name__ == "__main__":
     ################################################################
     
     try:
-        _SIZ_ = int(input("Pixellation size? (e.g. 16 = 16px squares): "))
+        _SIZ_ = int(input("Pixelation size? (e.g. 16 = 16px squares): "))
         Edit.DST_PXL_IMG(IMG_NAME, _SIZ_)
     except ValueError:
-        print("[LOG] PIXELLATION -> IGNORE -> Chosen pixellation size is not an integer!")
+        print("[LOG] PIXELLATION -> IGNORE -> Chosen pixelation size is not an integer!")
     try:
         _SIZ_ = int(input("Horizontal and vertical stretch? (e.g. 64 = 64px stretch): "))
         Edit.DST_HOR_IMG(IMG_NAME, _SIZ_)
         Edit.DST_VER_IMG(IMG_NAME, _SIZ_)
     except ValueError:
-        print("[LOG] HORIZONTAL / VERTICAL STRETCH -> IGNORE -> Chosen pixellation / stretch size is not an integer!")
+        print("[LOG] HORIZONTAL / VERTICAL STRETCH -> IGNORE -> Chosen pixelation / stretch size is not an integer!")
     Edit.DST_MIX_IMG(IMG_NAME)
     
     for MAG in range(1, 6):
